@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>✅ Appointment Booked Successfully</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            color: #27ae60;
+        }
+        p {
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✅ Appointment Successfully Booked!</h1>
+    <p>Your appointment has been scheduled successfully.</p>
+
+    {% if follow_up_date %}
+        <p>🔔 Follow-Up Reminder: Please check your health again on <strong>{{ follow_up_date }}</strong>.</p>
+    {% endif %}
+
+    <a href="/" class="button">🏠 Go Back to Home</a>
+
+</body>
+</html>

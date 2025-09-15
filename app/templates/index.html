@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🩺 Telemedicine Smart Health Assistant</title>
+  <style>
+    /* Background gradient animation */
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Fade slide-in */
+    @keyframes fadeInSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(270deg, #f7f9fc, #d0eaff, #e3f2fd);
+      background-size: 600% 600%;
+      animation: bgAnimation 15s ease infinite;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      animation: fadeInSlide 1s ease forwards;
+    }
+
+    .quote {
+      margin: 20px auto;
+      font-style: italic;
+      font-size: 1.2em;
+      padding: 20px 25px;
+      background: linear-gradient(135deg, #eaf4ff, #dceeff);
+      border-left: 6px solid #3498db;
+      border-radius: 10px;
+      max-width: 700px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeInSlide 1.5s ease forwards;
+      opacity: 0;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    nav {
+      margin-top: 30px;
+      animation: fadeInSlide 2s ease forwards;
+      opacity: 0;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #2d89c5;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a:active {
+      transform: scale(0.98);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      .quote {
+        font-size: 1em;
+        padding: 16px;
+      }
+      nav a {
+        width: 100%;
+        display: block;
+        margin: 10px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🩺 Telemedicine Smart Health Assistant</h1>
+
+  <div class="quote">
+    💡 <strong>Daily Health Tip:</strong><br>
+    "{{ quote }}"
+  </div>
+
+  <nav>
+    <a href="{% url 'symptom_checker' %}">🔍 Symptom Checker</a>
+    <a href="{% url 'appointment_scheduler' %}">📅 Book Appointment</a>
+    <a href="{% url 'admin:index' %}">🔧 Admin Dashboard</a>
+  </nav>
+
+</body>
+</html>
+

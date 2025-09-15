@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medical Appointment Booking</title>
+  <style>
+    /* Basic reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Container fade and slide-in */
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      max-width: 500px;
+      width: 100%;
+      animation: fadeSlideIn 0.7s ease forwards;
+      overflow: hidden;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #2c3e50;
+      letter-spacing: 1.2px;
+    }
+
+    /* Floating label wrapper */
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    /* Hide the native input label */
+    label {
+      position: absolute;
+      left: 12px;
+      top: 14px;
+      color: #999;
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.3s ease all;
+      background: white;
+      padding: 0 5px;
+      border-radius: 3px;
+    }
+
+    /* Inputs & selects styles */
+    input, select {
+      width: 100%;
+      padding: 14px 12px 14px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      background: transparent;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    /* Underline animation on focus */
+    input:focus, select:focus {
+      border-bottom-color: #28a745;
+      animation: underlineGrow 0.3s forwards;
+    }
+
+    /* Label floats when input has value or focus */
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    select:focus + label,
+    select:not([value=""]) + label {
+      top: -10px;
+      left: 8px;
+      font-size: 13px;
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    /* Underline grow animation */
+    @keyframes underlineGrow {
+      from { border-bottom-color: #ccc; }
+      to { border-bottom-color: #28a745; }
+    }
+
+    /* Button styles with ripple effect */
+    button {
+      position: relative;
+      overflow: hidden;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      outline: none;
+    }
+    button:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+
+    /* Ripple effect span */
+    button .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleEffect 0.6s linear;
+      background-color: rgba(255, 255, 255, 0.7);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Shake animation for form validation fail */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-10px); }
+      40%, 80% { transform: translateX(10px); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
+      border-bottom-color: red !important;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Book an Appointment</h2>
+    <form id="appointmentForm" novalidate>
+      <div class="form-group">
+        <input type="text" id="patientName" name="patientName" placeholder=" " required />
+        <label for="patientName">Patient Name</label>
+      </div>
+
+      <div class="form-group">
+        <select id="doctor" name="doctor" required>
+          <option value="" disabled selected hidden></option>
+          <option value="Dr. Ravi">Dr. Ravi - General Physician</option>
+          <option value="Dr. Priya">Dr. Priya - Cardiologist</option>
+          <option value="Dr. Kumar">Dr. Kumar - Neurologist</option>
+          <option value="Dr. Meena">Dr. Meena - Pediatrician</option>
+        </select>
+        <label for="doctor">Select Doctor</label>
+      </div>
+
+      <div class="form-group">
+        <input type="date" id="date" name="date" placeholder=" " required />
+        <label for="date">Appointment Date</label>
+      </div>
+
+      <div class="form-group">
+        <input type="time" id="time" name="time" placeholder=" " required />
+        <label for="time">Appointment Time</label>
+      </div>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('appointmentForm');
+    const button = form.querySelector('button');
+
+    // Ripple effect on button click
+    button.addEventListener('click', function(e) {
+      const circle = document.createElement('span');
+      circle.classList.add('ripple');
+      const rect = button.getBoundingClientRect();
+      circle.style.left = `${e.clientX - rect.left}px`;
+      circle.style.top = `${e.clientY - rect.top}px`;
+      circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
+
+      button.appendChild(circle);
+
+      circle.addEventListener('animationend', () => {
+        circle.remove();
+      });
+    });
+
+    // Shake form inputs if invalid on submit
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let isValid = true;
+
+      // Check required inputs
+      ['patientName', 'doctor', 'date', 'time'].forEach(id => {
+        const input = document.getElementById(id);
+        if (!input.value) {
+          isValid = false;
+          input.classList.add('shake');
+          setTimeout(() => input.classList.remove('shake'), 400);
+        }
+      });
+
+      if (isValid) {
+        alert('Appointment booked successfully!');
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
