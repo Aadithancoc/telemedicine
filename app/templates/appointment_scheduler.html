@@ -5,32 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Medical Appointment Booking</title>
   <style>
-    /* Basic reset */
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(270deg, #f7f9fc, #d0eaff, #e3f2fd);
+      background-size: 600% 600%;
+      animation: bgAnimation 15s ease infinite;
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
+      flex-direction: column;
     }
 
-    /* Container fade and slide-in */
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     @keyframes fadeSlideIn {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .container {
@@ -51,13 +50,8 @@
       letter-spacing: 1.2px;
     }
 
-    /* Floating label wrapper */
-    .form-group {
-      position: relative;
-      margin-bottom: 25px;
-    }
+    .form-group { position: relative; margin-bottom: 25px; }
 
-    /* Hide the native input label */
     label {
       position: absolute;
       left: 12px;
@@ -71,7 +65,6 @@
       border-radius: 3px;
     }
 
-    /* Inputs & selects styles */
     input, select {
       width: 100%;
       padding: 14px 12px 14px;
@@ -83,13 +76,10 @@
       transition: border-color 0.3s ease;
     }
 
-    /* Underline animation on focus */
     input:focus, select:focus {
-      border-bottom-color: #28a745;
-      animation: underlineGrow 0.3s forwards;
+      border-bottom-color: #3498db;
     }
 
-    /* Label floats when input has value or focus */
     input:focus + label,
     input:not(:placeholder-shown) + label,
     select:focus + label,
@@ -97,21 +87,12 @@
       top: -10px;
       left: 8px;
       font-size: 13px;
-      color: #28a745;
+      color: #3498db;
       font-weight: bold;
     }
 
-    /* Underline grow animation */
-    @keyframes underlineGrow {
-      from { border-bottom-color: #ccc; }
-      to { border-bottom-color: #28a745; }
-    }
-
-    /* Button styles with ripple effect */
     button {
-      position: relative;
-      overflow: hidden;
-      background-color: #28a745;
+      background-color: #3498db;
       color: white;
       border: none;
       border-radius: 6px;
@@ -119,123 +100,85 @@
       font-size: 18px;
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      transition: all 0.3s ease;
       outline: none;
+      margin-top: 10px;
     }
     button:hover {
-      background-color: #218838;
+      background-color: #2d89c5;
       transform: scale(1.05);
     }
-    button:active {
-      transform: scale(0.98);
+
+    .success-message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #dff0d8;
+      color: #3c763d;
+      font-weight: bold;
+      text-align: center;
     }
 
-    /* Ripple effect span */
-    button .ripple {
-      position: absolute;
-      border-radius: 50%;
-      transform: scale(0);
-      animation: rippleEffect 0.6s linear;
-      background-color: rgba(255, 255, 255, 0.7);
-      pointer-events: none;
-      z-index: 10;
+    nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    @keyframes rippleEffect {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
+    nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
     }
 
-    /* Shake animation for form validation fail */
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-10px); }
-      40%, 80% { transform: translateX(10px); }
+    nav a:hover {
+      background-color: #2d89c5;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
 
-    .shake {
-      animation: shake 0.4s;
-      border-bottom-color: red !important;
+    @media (max-width: 600px) {
+      .container { padding: 25px; }
+      nav a { width: 100%; text-align: center; }
     }
-
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Book an Appointment</h2>
-    <form id="appointmentForm" novalidate>
-      <div class="form-group">
-        <input type="text" id="patientName" name="patientName" placeholder=" " required />
-        <label for="patientName">Patient Name</label>
-      </div>
-
-      <div class="form-group">
-        <select id="doctor" name="doctor" required>
-          <option value="" disabled selected hidden></option>
-          <option value="Dr. Ravi">Dr. Ravi - General Physician</option>
-          <option value="Dr. Priya">Dr. Priya - Cardiologist</option>
-          <option value="Dr. Kumar">Dr. Kumar - Neurologist</option>
-          <option value="Dr. Meena">Dr. Meena - Pediatrician</option>
-        </select>
-        <label for="doctor">Select Doctor</label>
-      </div>
-
-      <div class="form-group">
-        <input type="date" id="date" name="date" placeholder=" " required />
-        <label for="date">Appointment Date</label>
-      </div>
-
-      <div class="form-group">
-        <input type="time" id="time" name="time" placeholder=" " required />
-        <label for="time">Appointment Time</label>
-      </div>
-
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-group">
+          {{ field }}
+          <label>{{ field.label }}</label>
+          {% if field.errors %}
+            <div style="color:red; font-size:0.9em;">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
       <button type="submit">Book Appointment</button>
     </form>
+
+    {% if success %}
+      <div class="success-message">
+        Appointment booked successfully!
+      </div>
+    {% endif %}
   </div>
 
-  <script>
-    const form = document.getElementById('appointmentForm');
-    const button = form.querySelector('button');
-
-    // Ripple effect on button click
-    button.addEventListener('click', function(e) {
-      const circle = document.createElement('span');
-      circle.classList.add('ripple');
-      const rect = button.getBoundingClientRect();
-      circle.style.left = `${e.clientX - rect.left}px`;
-      circle.style.top = `${e.clientY - rect.top}px`;
-      circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
-
-      button.appendChild(circle);
-
-      circle.addEventListener('animationend', () => {
-        circle.remove();
-      });
-    });
-
-    // Shake form inputs if invalid on submit
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      let isValid = true;
-
-      // Check required inputs
-      ['patientName', 'doctor', 'date', 'time'].forEach(id => {
-        const input = document.getElementById(id);
-        if (!input.value) {
-          isValid = false;
-          input.classList.add('shake');
-          setTimeout(() => input.classList.remove('shake'), 400);
-        }
-      });
-
-      if (isValid) {
-        alert('Appointment booked successfully!');
-        form.reset();
-      }
-    });
-  </script>
+  <nav>
+    <a href="{% url 'index' %}">🏠 Home</a>
+    <a href="{% url 'symptom_checker' %}">🔍 Symptom Checker</a>
+  </nav>
 </body>
 </html>
+

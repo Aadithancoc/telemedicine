@@ -7,18 +7,27 @@
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: white;
+        background: linear-gradient(270deg, #f7f9fc, #d0eaff, #e3f2fd);
+        background-size: 600% 600%;
+        animation: bgAnimation 15s ease infinite;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
         margin: 0;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    @keyframes bgAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     .container {
         max-width: 500px;
-        width: 90%;
-        margin: auto;
+        width: 100%;
         background: white;
         padding: 40px;
         border-radius: 15px;
@@ -33,7 +42,7 @@
 
     h2 {
         text-align: center;
-        color: #2d3436;
+        color: #2c3e50;
         margin-bottom: 25px;
         animation: fadeInText 1.5s ease forwards;
         opacity: 0;
@@ -55,15 +64,15 @@
     }
 
     textarea:focus {
-        border-color: #0984e3;
-        box-shadow: 0 0 15px rgba(9,132,227,0.4);
+        border-color: #3498db;
+        box-shadow: 0 0 15px rgba(52,152,219,0.4);
         outline: none;
     }
 
     button {
         padding: 12px 25px;
         border: none;
-        background: linear-gradient(45deg, #00b894, #55efc4);
+        background: linear-gradient(45deg, #3498db, #6c5ce7);
         color: white;
         font-weight: bold;
         border-radius: 10px;
@@ -77,7 +86,7 @@
     button:hover {
         transform: translateY(-3px) scale(1.02);
         box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        background: linear-gradient(45deg, #55efc4, #00b894);
+        background: linear-gradient(45deg, #6c5ce7, #3498db);
     }
 
     .result {
@@ -96,41 +105,67 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    nav {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+    }
+
+    nav a:hover {
+        background-color: #2d89c5;
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 25px;
+        }
+        textarea {
+            height: 80px;
+        }
+        nav a {
+            width: 100%;
+        }
+    }
 </style>
 </head>
 <body>
 <div class="container">
     <h2>Enter Your Symptoms</h2>
-    <textarea id="symptoms" placeholder="e.g., fever, cough, headache"></textarea>
-    <button onclick="checkSymptoms()">Submit</button>
-    <div class="result" id="result"></div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if advice %}
+        <div class="result show">
+            {% for item in advice %}
+                <p>{{ item }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
 </div>
 
-<script>
-function checkSymptoms() {
-    const input = document.getElementById('symptoms').value.toLowerCase();
-    const resultDiv = document.getElementById('result');
-    let message = "";
+<nav>
+    <a href="{% url 'index' %}">🏠 Home</a>
+    <a href="{% url 'appointment_scheduler' %}">📅 Book Appointment</a>
+</nav>
 
-    if(input.includes("fever") && input.includes("cough")) {
-        message = "You might have a cold or flu. Stay hydrated and consult a doctor if necessary.";
-    } else if(input.includes("headache") && input.includes("nausea")) {
-        message = "Possible migraine or dehydration. Rest well and drink plenty of fluids.";
-    } else if(input.includes("fatigue") && input.includes("body pain")) {
-        message = "You could be experiencing stress or viral infection. Take rest and monitor symptoms.";
-    } else if(input.includes("chest pain") && input.includes("shortness of breath")) {
-        message = "Seek medical attention immediately.";
-    } else {
-        message = "Symptoms not recognized. Please consult a doctor.";
-    }
-
-    resultDiv.textContent = message;
-    resultDiv.classList.add("show");
-
-    // Reset animation if button clicked again
-    void resultDiv.offsetWidth;
-    resultDiv.classList.add("show");
-}
-</script>
 </body>
 </html>

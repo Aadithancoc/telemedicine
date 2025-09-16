@@ -26,6 +26,10 @@
       padding: 40px 20px;
       text-align: center;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     h1 {
@@ -57,11 +61,14 @@
       opacity: 0;
       animation-delay: 1s;
       animation-fill-mode: forwards;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
     }
 
     nav a {
       display: inline-block;
-      margin: 10px;
       padding: 12px 20px;
       background-color: #3498db;
       color: #fff;
@@ -90,10 +97,13 @@
         font-size: 1em;
         padding: 16px;
       }
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
       nav a {
         width: 100%;
         display: block;
-        margin: 10px auto;
       }
     }
   </style>
@@ -104,7 +114,12 @@
 
   <div class="quote">
     💡 <strong>Daily Health Tip:</strong><br>
-    "{{ quote }}"
+    <!-- Dynamically render the quote from Django context -->
+    {% if quote %}
+      "{{ quote }}"
+    {% else %}
+      "Stay healthy and take care of yourself!"
+    {% endif %}
   </div>
 
   <nav>
@@ -115,4 +130,5 @@
 
 </body>
 </html>
+
 

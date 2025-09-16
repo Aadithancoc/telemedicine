@@ -1,69 +1,187 @@
-{
-  "fever,cough": "You might have a cold or flu. Stay hydrated and consult a doctor if necessary.",
-  "headache,nausea": "Possible migraine or dehydration. Rest well and drink plenty of fluids.",
-  "chest pain,shortness of breath": "Could indicate a heart or lung issue. Seek immediate medical attention.",
-  "stomach pain,diarrhea": "Might be a stomach infection or food poisoning. Stay hydrated and avoid spicy food.",
-  "joint pain,swelling": "Possible arthritis or injury. Consult a doctor if pain persists.",
-  "sore throat,runny nose": "Common cold or seasonal allergy. Drink warm fluids and rest.",
-  "dizziness,blurred vision": "Could be low blood pressure, dehydration, or eye strain. Get checked if symptoms continue.",
-  "skin rash,itching": "Might be an allergy or skin infection. Avoid scratching and consult a dermatologist.",
-  "fatigue,weight loss": "Possible thyroid issue or diabetes. Important to get medical tests done.",
-  "high fever,body ache": "Could be viral fever like dengue or flu. Rest and consult a doctor immediately.",
-  "abdominal bloating,constipation": "Might be indigestion or IBS. Increase fiber intake and stay hydrated.",
-  "palpitations,anxiety": "Could be stress-induced or heart-related. Practice relaxation techniques and consult a doctor if frequent.",
-  "persistent cough,weight loss": "Could indicate tuberculosis or chronic lung condition. See a doctor for proper tests.",
-  "frequent urination,thirst": "Possible diabetes. Important to consult a doctor and get blood sugar tested.",
-  "ear pain,hearing loss": "Could indicate ear infection or wax buildup. See an ENT specialist.",
-  "nosebleed,high blood pressure": "Might be related to hypertension. Monitor blood pressure and consult a physician.",
-  "swollen lymph nodes,fatigue": "Possible infection or immune disorder. Monitor symptoms and get checked.",
-  "chest tightness,wheezing": "Could be asthma or allergic reaction. Seek medical attention if severe.",
-  "persistent fever,night sweats": "Could be tuberculosis or chronic infection. Important to consult a doctor.",
-  "difficulty swallowing,hoarseness": "Might indicate throat infection or vocal cord issue. See an ENT specialist.",
-  "lower back pain,numbness in legs": "Possible herniated disc or sciatica. Consult an orthopedic specialist.",
-  "increased appetite,weight gain": "Possible hormonal imbalance or thyroid issue. Medical evaluation recommended.",
-  "cold hands,feet": "Could be poor circulation or hypothyroidism. Check with a physician.",
-  "muscle weakness,cramps": "Might be electrolyte imbalance or neurological condition. Hydrate and consult a doctor.",
-  "bloody stool,abdominal pain": "Possible gastrointestinal bleeding or hemorrhoids. Urgent medical checkup required.",
-  "frequent headaches,vision changes": "Possible migraine or neurological condition. Consult a neurologist.",
-  "persistent fatigue,low mood": "Could be depression or anemia. Important to consult a healthcare provider.",
-  "swollen ankles,shortness of breath": "Possible heart or kidney issue. Seek medical attention urgently.",
-  "persistent dry cough,weight loss": "Could indicate lung disease or tuberculosis. Medical evaluation needed.",
-  "difficulty urinating,pain in lower abdomen": "Possible UTI or prostate issue. Consult a doctor for tests.",
-  "excessive sweating,rapid heartbeat": "Could be hyperthyroidism or anxiety disorder. Get medical tests done.",
-  "nose congestion,facial pain": "Might be sinusitis. Consult a doctor if persistent.",
-  "difficulty concentrating,forgetfulness": "Could be early cognitive decline or stress. See a healthcare professional.",
-  "blood in urine,painful urination": "Possible UTI, kidney stones, or other serious condition. Immediate medical attention recommended.",
-  "persistent cough,bloody sputum": "Could indicate tuberculosis or lung cancer. Urgent medical consultation needed.",
-  "chest discomfort,sweating,lightheadedness": "Signs of a possible heart attack. Seek emergency medical care immediately.",
-  "unexplained bruising,bleeding gums": "Could be blood clotting disorder or vitamin deficiency. Medical evaluation needed.",
-  "persistent sore throat,hoarseness,weight loss": "Might indicate throat cancer or chronic infection. See a specialist promptly.",
-  "joint stiffness,morning stiffness": "Could be rheumatoid arthritis or other autoimmune disease. Early diagnosis helps.",
-  "frequent infections,poor wound healing": "Could indicate immune deficiency or diabetes. Consult a doctor.",
-  "loss of appetite,abdominal pain": "Could be peptic ulcer or gastritis. Medical tests recommended.",
-  "numbness,tingling in hands or feet": "Possible neuropathy or diabetes. Important to consult a doctor.",
-  "persistent cough,fever,night sweats": "Could suggest tuberculosis or chronic infection. Seek medical tests.",
-  "irregular heartbeat,shortness of breath": "Could indicate arrhythmia or heart condition. Immediate cardiologist consultation advised.",
-  "swelling in face or legs,high blood pressure": "Possible kidney disease or heart failure. Medical evaluation important.",
-  "persistent nausea,vomiting,abdominal pain": "Could be gastritis, pancreatitis, or other GI disorder. Consult a doctor.",
-  "chronic fatigue,sore throat,swollen glands": "Could be chronic fatigue syndrome or mononucleosis. Medical consultation advised.",
-  "painful urination,blood in urine,fever": "Possible urinary tract infection or kidney infection. Consult a doctor.",
-  "severe headache,stiff neck,fever": "Could indicate meningitis. Seek emergency medical care immediately.",
-  "chest pain,profuse sweating,shortness of breath": "Possible heart attack. Call emergency services immediately.",
-  "persistent dry skin,itching,cracking": "Could be eczema or psoriasis. Dermatologist consultation recommended.",
-  "eye redness,discharge": "Possible conjunctivitis or eye infection. Avoid touching eyes and consult an ophthalmologist.",
-  "difficulty breathing,swelling of lips or face": "Could indicate an allergic reaction. Seek immediate medical attention.",
-  "persistent sore throat,fever,ear pain": "Might indicate tonsillitis or throat infection. Consult an ENT doctor.",
-  "unexplained bruises,fatigue,frequent infections": "Could suggest leukemia or blood disorder. Important to consult a hematologist.",
-  "loss of appetite,jaundice,abdominal swelling": "Possible liver disease or hepatitis. Urgent medical evaluation required.",
-  "chest pain,worsening on exertion": "Could be angina or coronary artery disease. Seek cardiologist opinion urgently.",
-  "persistent vomiting,dehydration": "Could indicate gastrointestinal obstruction or infection. Immediate medical care recommended.",
-  "abdominal pain,vomiting,bloating": "Possible bowel obstruction or severe infection. Consult a doctor urgently.",
-  "fever,confusion,disorientation": "Possible severe infection or encephalitis. Seek emergency medical care.",
-  "severe menstrual pain,heavy bleeding": "Could indicate endometriosis or fibroids. Consult a gynecologist.",
-  "unintentional weight loss,persistent cough,fever": "Could suggest tuberculosis or cancer. Early medical tests recommended.",
-  "wheezing,cough,shortness of breath": "Possible asthma or COPD. Regular monitoring and medical treatment needed.",
-  "difficulty walking,muscle weakness,vision problems": "Could indicate multiple sclerosis or neurological disorder. Neurologist consultation advised.",
-  "excessive thirst,frequent urination,blurred vision": "Possible diabetes. Immediate medical evaluation recommended.",
-  "persistent abdominal pain,fatigue,weight loss": "Could suggest inflammatory bowel disease or cancer. Consult a doctor.",
-  "loss of smell,loss of taste": "Possible COVID-19 or neurological issue. Monitor and consult a healthcare provider."
-}
+[
+  {
+    "symptoms": ["fever", "body ache"],
+    "message": "You may have a viral infection. Stay hydrated and rest."
+  },
+  {
+    "symptoms": ["cough", "sore throat"],
+    "message": "Could be a common cold or mild flu. Drink warm fluids and rest."
+  },
+  {
+    "symptoms": ["headache", "nausea"],
+    "message": "Possible migraine. Avoid bright lights and get adequate rest."
+  },
+  {
+    "symptoms": ["chest pain", "shortness of breath"],
+    "message": "Could indicate heart or lung problem. Seek immediate medical attention."
+  },
+  {
+    "symptoms": ["stomach pain", "vomiting"],
+    "message": "Might be food poisoning or stomach infection. Stay hydrated."
+  },
+  {
+    "symptoms": ["joint pain", "swelling"],
+    "message": "Possible arthritis or inflammation. Consult a doctor if persistent."
+  },
+  {
+    "symptoms": ["dizziness", "blurred vision"],
+    "message": "Could be dehydration or low blood pressure. Sit down and drink water."
+  },
+  {
+    "symptoms": ["skin rash", "itching"],
+    "message": "May indicate allergy or skin infection. Avoid scratching and monitor symptoms."
+  },
+  {
+    "symptoms": ["fatigue", "weight loss"],
+    "message": "Could suggest thyroid issues or nutritional deficiency. Get medical checkup."
+  },
+  {
+    "symptoms": ["high fever", "chills"],
+    "message": "Possible flu or bacterial infection. Seek medical attention if it persists."
+  },
+  {
+    "symptoms": ["abdominal bloating", "constipation"],
+    "message": "Could be indigestion or IBS. Increase fiber intake and drink water."
+  },
+  {
+    "symptoms": ["palpitations", "anxiety"],
+    "message": "Might be stress or heart rhythm irregularities. Consult a doctor if frequent."
+  },
+  {
+    "symptoms": ["persistent cough", "fever"],
+    "message": "Possible respiratory infection. Medical evaluation recommended."
+  },
+  {
+    "symptoms": ["frequent urination", "thirst"],
+    "message": "May indicate diabetes. Get blood sugar checked."
+  },
+  {
+    "symptoms": ["ear pain", "hearing loss"],
+    "message": "Could indicate ear infection. See an ENT specialist."
+  },
+  {
+    "symptoms": ["nosebleed", "headache"],
+    "message": "May be related to high blood pressure. Monitor and consult a physician."
+  },
+  {
+    "symptoms": ["swollen lymph nodes", "fatigue"],
+    "message": "Possible infection or immune issue. Seek medical advice."
+  },
+  {
+    "symptoms": ["chest tightness", "wheezing"],
+    "message": "Could indicate asthma or allergic reaction. Seek medical attention."
+  },
+  {
+    "symptoms": ["persistent fever", "night sweats"],
+    "message": "Possible infection or chronic condition. Consult a doctor."
+  },
+  {
+    "symptoms": ["difficulty swallowing", "hoarseness"],
+    "message": "May indicate throat infection. ENT consultation recommended."
+  },
+  {
+    "symptoms": ["lower back pain", "numbness in legs"],
+    "message": "Possible herniated disc or sciatica. Consult an orthopedic specialist."
+  },
+  {
+    "symptoms": ["increased appetite", "weight gain"],
+    "message": "Could suggest hormonal imbalance. Medical evaluation needed."
+  },
+  {
+    "symptoms": ["cold hands", "feet"],
+    "message": "May indicate poor circulation or hypothyroidism. Check with a physician."
+  },
+  {
+    "symptoms": ["muscle weakness", "cramps"],
+    "message": "Possible electrolyte imbalance or neurological condition. Stay hydrated and see a doctor."
+  },
+  {
+    "symptoms": ["bloody stool", "abdominal pain"],
+    "message": "Could indicate gastrointestinal bleeding. Seek urgent medical care."
+  },
+  {
+    "symptoms": ["frequent headaches", "vision changes"],
+    "message": "Possible migraine or eye issues. Consult a neurologist or ophthalmologist."
+  },
+  {
+    "symptoms": ["persistent fatigue", "low mood"],
+    "message": "Could be depression or anemia. Seek mental health or medical support."
+  },
+  {
+    "symptoms": ["swollen ankles", "shortness of breath"],
+    "message": "Possible heart or kidney problem. Seek medical care."
+  },
+  {
+    "symptoms": ["persistent dry cough", "weight loss"],
+    "message": "Could indicate lung disease. Medical evaluation required."
+  },
+  {
+    "symptoms": ["difficulty urinating", "pain in lower abdomen"],
+    "message": "May indicate UTI or prostate issues. Consult a doctor."
+  },
+  {
+    "symptoms": ["excessive sweating", "rapid heartbeat"],
+    "message": "Could be thyroid or anxiety disorder. Get medical tests done."
+  },
+  {
+    "symptoms": ["nose congestion", "facial pain"],
+    "message": "Possible sinus infection. Consult a doctor if persistent."
+  },
+  {
+    "symptoms": ["difficulty concentrating", "forgetfulness"],
+    "message": "Could indicate stress or early cognitive issues. Seek professional help."
+  },
+  {
+    "symptoms": ["blood in urine", "painful urination"],
+    "message": "May suggest UTI or kidney issues. Consult a doctor immediately."
+  },
+  {
+    "symptoms": ["persistent cough", "bloody sputum"],
+    "message": "Could indicate tuberculosis. Seek urgent medical care."
+  },
+  {
+    "symptoms": ["chest discomfort", "sweating", "lightheadedness"],
+    "message": "Signs of possible heart attack. Call emergency services."
+  },
+  {
+    "symptoms": ["unexplained bruising", "bleeding gums"],
+    "message": "May indicate blood disorder. Seek medical evaluation."
+  },
+  {
+    "symptoms": ["persistent sore throat", "hoarseness", "weight loss"],
+    "message": "Could be throat infection or malignancy. See a specialist."
+  },
+  {
+    "symptoms": ["joint stiffness", "morning stiffness"],
+    "message": "Possible rheumatoid arthritis. Early diagnosis recommended."
+  },
+  {
+    "symptoms": ["frequent infections", "poor wound healing"],
+    "message": "May indicate immune deficiency or diabetes. Get medical advice."
+  },
+  {
+    "symptoms": ["loss of appetite", "abdominal pain"],
+    "message": "Possible gastrointestinal issues. Medical evaluation recommended."
+  },
+  {
+    "symptoms": ["numbness", "tingling in hands or feet"],
+    "message": "May indicate neuropathy or diabetes. Consult a doctor."
+  },
+  {
+    "symptoms": ["persistent cough", "fever", "night sweats"],
+    "message": "Could suggest tuberculosis. Seek medical tests."
+  },
+  {
+    "symptoms": ["irregular heartbeat", "shortness of breath"],
+    "message": "Possible arrhythmia or heart condition. Immediate consultation needed."
+  },
+  {
+    "symptoms": ["swelling in face or legs", "high blood pressure"],
+    "message": "May indicate kidney or heart issue. Medical evaluation recommended."
+  },
+  {
+    "symptoms": ["persistent nausea", "vomiting", "abdominal pain"],
+    "message": "Possible gastrointestinal disorder. Consult a doctor."
+  }
+]
+
