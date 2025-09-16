@@ -1,5 +1,3 @@
-import os
-
-TWILIO_ACCOUNT_SID = os.getenv("AC5dcd1745e854afd514c55c78e6620343")
-TWILIO_AUTH_TOKEN = os.getenv("c930eb5a71c970c5b1202bb9b5ead39e")
-TWILIO_PHONE_NUMBER = os.getenv("+12137151642")
+VONAGE_API_KEY = "b637e121"
+VONAGE_API_SECRET = "your_vonage_api_secret"
+VONAGE_BRAND_NAME = "MyHealthApp"

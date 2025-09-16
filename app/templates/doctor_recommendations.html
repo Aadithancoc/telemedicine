@@ -1,0 +1,55 @@
+<!-- doctor_recommendations.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Recommendations</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
+</head>
+<body>
+
+<h1>Find Doctors</h1>
+
+<!-- Search Form -->
+<form method="get" action="">
+    <input type="text" name="query" placeholder="Enter Condition (e.g., Ear Pain)" required>
+    <button type="submit">Search</button>
+</form>
+
+<!-- Display Doctors -->
+<h2>Recommended Doctors</h2>
+<ul>
+    {% for doctor in doctors %}
+        <li>{{ doctor.name }} - {{ doctor.specialty }} - {{ doctor.address }}</li>
+    {% endfor %}
+</ul>
+
+<!-- Map to Display Doctors' Locations -->
+<div id="map" style="height: 500px;"></div>
+
+<script>
+    function initMap() {
+        var mapOptions = {
+            center: { lat: 28.6139, lng: 77.2090 },  // Default to New Delhi (replace with your desired location)
+            zoom: 12
+        };
+
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        {% for doctor in doctors %}
+            var marker = new google.maps.Marker({
+                position: { lat: {{ doctor.latitude }}, lng: {{ doctor.longitude }} },
+                map: map,
+                title: '{{ doctor.name }}'
+            });
+        {% endfor %}
+    }
+
+    // Initialize the map when the page loads
+    google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+
+</body>
+</html>

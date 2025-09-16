@@ -3,16 +3,16 @@ import random
 import json
 from typing import List
 from twilio.rest import Client
-from config import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER
+import vonage
+from config import VONAGE_API_KEY, VONAGE_API_SECRET, VONAGE_BRAND_NAME
 import logging
 import os
 
 LOG_DIR = 'logs'
 LOG_FILE = os.path.join(LOG_DIR, 'sms_logs.txt')
 os.makedirs(LOG_DIR, exist_ok=True)
-
 logger = logging.getLogger(__name__)
-handler = logging.FileHandler('logs/sms_logs.txt')
+handler = logging.FileHandler(LOG_FILE)
 formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
@@ -34,18 +34,27 @@ def get_daily_quote() -> str:
 
 def send_sms(to_number: str, message: str) -> None:
     """
-    Sends an SMS using Twilio and logs the result.
+    Sends an SMS using Vonage and logs the result.
     """
     try:
-        client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-        msg = client.messages.create(
-            body=message,
-            from_=TWILIO_PHONE_NUMBER,
-            to=to_number
+        client = vonage.Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET) # type: ignore
+        responseData = client.sms.send(
+            {
+                "from": "TelemedApp",  # Sender ID (or registered number)
+                "to": to_number,
+                "text": message,
+            }
         )
-        logger.info(f"SMS sent to {to_number}, SID: {msg.sid}")
+
+        if responseData["messages"][0]["status"] == "0":
+            logger.info(f"SMS sent to {to_number}, Message ID: {responseData['messages'][0]['message-id']}")
+        else:
+            error_text = responseData["messages"][0]["error-text"]
+            logger.error(f"Failed to send SMS to {to_number}: {error_text}")
+
     except Exception as e:
         logger.error(f"Failed to send SMS to {to_number}: {str(e)}")
+
 
 def get_advice(symptoms_list: List[str]) -> List[str]:
     """
